@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.static("."));
 
 // Replace this with your actual API key from OpenAI
-const API_KEY = "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";
+const API_KEY = "sk-TGRWkpiFklW3jWWZrZIRT3BlbkFJmID5BwIvaJeszKNGoRUwwwwww";
 
 app.use(bodyParser.json()); // Middleware to parse JSON bodies
 
