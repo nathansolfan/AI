@@ -3,9 +3,13 @@ const fetch = require("node-fetch");
 const bodyParser = require("body-parser");
 const app = express();
 const PORT = 3000; // You can choose any port that's available
+const cors = require("cors");
+app.use(cors());
+
+app.use(express.static("."));
 
 // Replace this with your actual API key from OpenAI
-const API_KEY = "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";
+const API_KEY = "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";
 
 app.use(bodyParser.json()); // Middleware to parse JSON bodies
 
