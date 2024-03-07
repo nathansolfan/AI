@@ -6,14 +6,45 @@ body {
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    font-family: "Trebuchet MS";
 }
 
 header {
     color: rgb(255,255,255);
     height: 150px;
     display: flex;
-    align-items: center;
-    
+    align-items: center; 
+    width: 100%;
+    justify-content: center;   
+}
+
+.bottom-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 150px;  
+}
+
+.input-container {
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+}
+
+input {
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgb(38,57,77) 0 20px 30px -10px;
+    box-sizing: border-box;
+}
+
+#submit-icon {
+    position: absolute;
+    top: 10px;
+    right: 30px;
 }
