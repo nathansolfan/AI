@@ -69,3 +69,35 @@ input {
 .image-container img {
     width: 100%;
 }
+
+#clear-images {
+    cursor: pointer;
+    background-color: #9c778a; /* Match the body's background for coherence */
+    color: #ffffff; /* White text for contrast */
+    border: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    margin-left: 20px; /* Add some space between the generate button and clear button */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#clear-images:hover {
+    background-color: #7d5f72; /* Slightly darker shade for hover effect */
+}
+
+#loading-bar-container {
+    width: 100%;
+    background-color: #ccc;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#loading-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #4caf50; /* You can choose any color */
+    transition: width 0.5s ease;
+}

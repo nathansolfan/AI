@@ -4,6 +4,8 @@ const submitIcon = document.querySelector("#submit-icon");
 const inputElement = document.querySelector("input");
 const imageSection = document.querySelector(".images-section");
 const clearImagesButton = document.querySelector("#clear-images");
+const loadingBarContainer = document.querySelector("#loading-bar-container");
+const loadingBar = document.querySelector("#loading-bar");
 
 const clearImages = () => {
   imageSection.innerHTML = "";
@@ -12,6 +14,19 @@ const clearImages = () => {
 const getImages = async () => {
   const userPrompt = inputElement.value;
   const fullPrompt = "dramatic" + userPrompt;
+  // show loading bar
+  loadingBarContainer.style.display = "block";
+  loadingBar.style.width = "0%";
+  // simulate loading
+  let loadingProgress = 0;
+  const interval = setInterval(() => {
+    loadingProgress += 10; // Increment progress
+    loadingBar.style.width = `${loadingProgress}`;
+
+    if (loadingProgress >= 100) {
+      clearInterval(interval);
+    }
+  }, 100);
 
   const options = {
     method: "POST",
@@ -41,6 +56,7 @@ const getImages = async () => {
       imageElement.setAttribute("src", imageObject.url);
       imageContainer.append(imageElement);
       imageSection.append(imageContainer);
+      loadingBarContainer.style.display = "none";
     });
   } catch (error) {
     console.error(error);

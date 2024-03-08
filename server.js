@@ -9,7 +9,8 @@ app.use(cors());
 app.use(express.static("."));
 
 // Replace this with your actual API key from OpenAI
-const API_KEY = app.use(bodyParser.json()); // Middleware to parse JSON bodies
+
+app.use(bodyParser.json()); // Middleware to parse JSON bodies
 
 // Endpoint to handle the image generation requests
 app.post("/generate-image", async (req, res) => {
