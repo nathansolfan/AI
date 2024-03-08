@@ -3,6 +3,11 @@ const API_KEY = "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";
 const submitIcon = document.querySelector("#submit-icon");
 const inputElement = document.querySelector("input");
 const imageSection = document.querySelector(".images-section");
+const clearImagesButton = document.querySelector("#clear-images");
+
+const clearImages = () => {
+  imageSection.innerHTML = "";
+};
 
 const getImages = async () => {
   const options = {
@@ -40,3 +45,4 @@ const getImages = async () => {
 };
 
 submitIcon.addEventListener("click", getImages);
+clearImagesButton.addEventListener("click", clearImages);
