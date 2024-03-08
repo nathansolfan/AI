@@ -10,13 +10,16 @@ const clearImages = () => {
 };
 
 const getImages = async () => {
+  const userPrompt = inputElement.value;
+  const fullPrompt = "dramatic" + userPrompt;
+
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      prompt: inputElement.value,
+      prompt: fullPrompt,
       n: 2,
       size: "1024x1024",
     }),
