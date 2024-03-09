@@ -12,6 +12,7 @@ body {
 }
 
 header {
+    position: relative;
     color: rgb(255,255,255);
     height: 150px;
     display: flex;
@@ -88,16 +89,12 @@ input {
 }
 
 #loading-bar-container {
-    width: 100%;
-    background-color: #ccc;
-    height: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-#loading-bar {
-    height: 100%;
-    width: 0%;
-    background-color: #4caf50; /* You can choose any color */
-    transition: width 0.5s ease;
+    position: absolute;
+    top: 100%; /* Position it at the bottom of the header */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Centers the loading message vertically */
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: adds a semi-transparent overlay */
+    color: #ffffff; /* Ensures the text color is white */
+    padding: 20px; /* Adds some padding around the text */
+    border-radius: 10px; /* Optional: adds rounded corners */
 }

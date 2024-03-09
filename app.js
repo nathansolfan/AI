@@ -5,7 +5,7 @@ const inputElement = document.querySelector("input");
 const imageSection = document.querySelector(".images-section");
 const clearImagesButton = document.querySelector("#clear-images");
 const loadingBarContainer = document.querySelector("#loading-bar-container");
-const loadingBar = document.querySelector("#loading-bar");
+const loadingProgress = document.querySelector("#loading-progress");
 
 const clearImages = () => {
   imageSection.innerHTML = "";
@@ -13,20 +13,11 @@ const clearImages = () => {
 
 const getImages = async () => {
   const userPrompt = inputElement.value;
-  const fullPrompt = "dramatic" + userPrompt;
-  // show loading bar
-  loadingBarContainer.style.display = "block";
-  loadingBar.style.width = "0%";
-  // simulate loading
-  let loadingProgress = 0;
-  const interval = setInterval(() => {
-    loadingProgress += 10; // Increment progress
-    loadingBar.style.width = `${loadingProgress}`;
+  const fullPrompt = "dramatic " + userPrompt;
 
-    if (loadingProgress >= 100) {
-      clearInterval(interval);
-    }
-  }, 100);
+  // Show the loading message
+  loadingProgress.textContent = "Loading images...";
+  loadingBarContainer.style.display = "block";
 
   const options = {
     method: "POST",
@@ -39,6 +30,7 @@ const getImages = async () => {
       size: "1024x1024",
     }),
   };
+
   try {
     const response = await fetch(
       "http://localhost:3000/generate-image",
@@ -47,19 +39,26 @@ const getImages = async () => {
     const data = await response.json();
     console.log(data);
 
-    // if data is present then use a forEach method where I call it imgObject
-
     data?.data.forEach((imageObject) => {
       const imageContainer = document.createElement("div");
       imageContainer.classList.add("image-container");
       const imageElement = document.createElement("img");
+
+      imageElement.onload = () => {
+        if (imageContainer === imageSection.lastChild) {
+          // Hide the loading message once the last image has loaded
+          loadingBarContainer.style.display = "none";
+        }
+      };
+
       imageElement.setAttribute("src", imageObject.url);
       imageContainer.append(imageElement);
       imageSection.append(imageContainer);
-      loadingBarContainer.style.display = "none";
     });
   } catch (error) {
     console.error(error);
+    // Hide the loading message in case of an error
+    loadingBarContainer.style.display = "none";
   }
 };
 
