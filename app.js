@@ -13,7 +13,7 @@ const clearImages = () => {
 
 const getImages = async () => {
   const userPrompt = inputElement.value;
-  const fullPrompt = "dramatic " + userPrompt;
+  const fullPrompt = "flamboyant " + userPrompt;
 
   // Show the loading message
   loadingProgress.textContent = "Loading images...";
